@@ -15,6 +15,7 @@
 	<table border="1" class="tbl">
 	
 		<thead>
+			<th>번호</th>
 			<th>도시</th>
 			<th>온도</th>
 			<th>상태</th>
@@ -24,7 +25,8 @@
 		<tbody>
 			<c:forEach items="${requestScope.wdto}" var="wdto">
 				<tr>
-					<td>${pageScope.wdto.city}</td>
+					<td>${pageScope.wdto.num}</td>
+					<td><a href="./detail">${pageScope.wdto.city}</a></td>
 					<td>${pageScope.wdto.gion}</td>
 					<td>${pageScope.wdto.status}</td>
 					<td>${pageScope.wdto.humidity}</td>

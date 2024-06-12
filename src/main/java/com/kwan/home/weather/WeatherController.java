@@ -1,6 +1,6 @@
 package com.kwan.home.weather;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,7 +8,7 @@ import com.kwan.home.Action;
 
 public class WeatherController {
 
-	private ArrayList<WeatherDTO> ar;
+	private List<WeatherDTO> ar;
 
 	private WeatherService ws;
 
@@ -26,7 +26,7 @@ public class WeatherController {
 
 		if (id.equals("list")) {
 
-			request.setAttribute("wdto", ws.getWeathers());
+			request.setAttribute("wdto", ws.getWeathers(ar));
 			action.setPath("/WEB-INF/views/weather/list.jsp");
 
 		} else if (id.equals("add")) {

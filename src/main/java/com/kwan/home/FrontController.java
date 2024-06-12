@@ -35,7 +35,7 @@ public class FrontController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("실행됨");
+		System.out.println("Front Controller");
 
 		String uri = request.getRequestURI();
 		String method = request.getMethod();
