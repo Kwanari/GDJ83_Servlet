@@ -14,8 +14,8 @@
 	<%-- ${스코프영역명.속성명} --%>
 	<!-- getter의 이름: get 제외한 첫글자를 소문자로 -->
 	<!-- setter의 이름: set 제외한 첫글자를 소문자로 -->
-	<h3>${requestScope.stu.name}</h3>
-	<h3>${requestScope.stu.num}</h3>
-	<h3>${requestScope.stu.avg}</h3>
+	<h3>${requestScope.result.name}</h3>
+	<h3>${requestScope.result.num}</h3>
+	<h3>${requestScope.result.avg}</h3>
 </body>
 </html>

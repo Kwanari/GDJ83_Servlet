@@ -12,6 +12,7 @@ public class StudentController {
 
 	public StudentController() {
 		this.ss = new StudentService();
+
 	}
 
 	public Action start(HttpServletRequest request) {
@@ -32,8 +33,10 @@ public class StudentController {
 		String method = request.getMethod(); // request변수에서 메서드를 변수에 저장
 
 		if (ar[2].equals("list")) {
-			List<Student> arStu = ss.getStudents();
-			request.setAttribute("arStu", arStu);
+
+			List<StudentDTO> list = ss.getStudents();
+
+			request.setAttribute("list", list);
 
 			action.setPath("/WEB-INF/views/student/list.jsp");
 
@@ -42,7 +45,7 @@ public class StudentController {
 			if (method.toUpperCase().equals("POST")) { // 메서드의 값이 POST라면
 				// 학생 등록 데이터 꺼내야함
 
-				Student student = new Student();
+				StudentDTO student = new StudentDTO();
 
 				String name = request.getParameter("name");
 				double avg = Double.parseDouble(request.getParameter("avg"));
@@ -74,8 +77,15 @@ public class StudentController {
 		} else if (ar[2].equals("delete")) {
 
 		} else if (ar[2].equals("detail")) {
-			Student stu = ss.makeStudent();
-			request.setAttribute("stu", stu);
+			String num = request.getParameter("num");
+			StudentDTO studentDTO = new StudentDTO();
+			studentDTO.setNum(Integer.parseInt(num));
+			StudentDTO result = new StudentDTO();
+
+			result = ss.getDetail(studentDTO);
+
+			request.setAttribute("result", result);
+
 			action.setPath("/WEB-INF/views/student/detail.jsp");
 		} else {
 

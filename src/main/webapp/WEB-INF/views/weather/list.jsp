@@ -10,7 +10,7 @@
 <Link href="/resources/css/tables.css" rel="stylesheet"> <!-- rel : 타입 -->
 </head>
 <body>
-	<h1>날씨 목록</h1>
+	<h1>Weather List</h1>
 	
 	<table border="1" class="tbl">
 	
@@ -26,7 +26,7 @@
 			<c:forEach items="${requestScope.wdto}" var="wdto">
 				<tr>
 					<td>${pageScope.wdto.num}</td>
-					<td><a href="./detail">${pageScope.wdto.city}</a></td>
+					<td><a href="./detail?num=${pageScope.wdto.num}">${pageScope.wdto.city}</a></td>
 					<td>${pageScope.wdto.gion}</td>
 					<td>${pageScope.wdto.status}</td>
 					<td>${pageScope.wdto.humidity}</td>

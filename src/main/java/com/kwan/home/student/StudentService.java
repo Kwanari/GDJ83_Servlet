@@ -1,31 +1,38 @@
 package com.kwan.home.student;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class StudentService {
+	private StudentDAO studentDAO;
+	private List<StudentDTO> list;
+	private StudentDTO result;
 
-	public List<Student> getStudents() {
-		ArrayList<Student> ar = new ArrayList<Student>();
-		Random random = new Random();
-
-		for (int i = 0; i < 5; i++) {
-			Student stu = new Student();
-
-			stu.setNum(i + 1);
-			stu.setName("name" + i);
-			stu.setAvg(random.nextInt(100) + random.nextDouble());
-
-			ar.add(stu);
+	public List<StudentDTO> getStudents() {
+		studentDAO = new StudentDAO();
+		try {
+			list = studentDAO.getStudent();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		return ar;
+		return list;
 	}
 
-	public Student makeStudent() {
+	public StudentDTO getDetail(StudentDTO studentDTO) {
+		try {
+			studentDAO = new StudentDAO();
+			result = studentDAO.getDetail(studentDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = null;
+		}
 
-		Student stu = new Student();
+		return result;
+	}
+
+	public StudentDTO makeStudent() {
+
+		StudentDTO stu = new StudentDTO();
 
 		// DB에서 꺼내올 데이터
 		stu.setNum(1);

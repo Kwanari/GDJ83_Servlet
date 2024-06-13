@@ -32,10 +32,10 @@
 	
 		<tbody>
 			<!-- 향상된 for문 -->
-			<c:forEach items="${requestScope.arStu}" var="student"> 
+			<c:forEach items="${requestScope.list}" var="student"> 
 				<tr>
 					<td>${pageScope.student.num}</td>
-					<td>${pageScope.student.name}</td>
+					<td><a href="./detail?num=${pageScope.student.num}">${pageScope.student.name}</a></td>
 					<td>${pageScope.student.avg}</td>
 				</tr>
 			</c:forEach>

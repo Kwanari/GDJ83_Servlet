@@ -50,4 +50,21 @@ public class WeatherDAO {
 
 		return list;
 	}
+
+	// detail
+	public WeatherDTO getDetail(WeatherDTO weatherDTO) throws Exception {
+		List<WeatherDTO> list = this.getWeathers(weatherDTO);
+		WeatherDTO detailDTO = new WeatherDTO();
+
+		for (WeatherDTO wdto : list) {
+			if (wdto.getNum() == weatherDTO.getNum()) {
+				detailDTO = wdto;
+
+				break;
+			}
+
+		}
+
+		return detailDTO;
+	}
 }
