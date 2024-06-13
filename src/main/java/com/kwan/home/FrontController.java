@@ -35,6 +35,9 @@ public class FrontController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		request.setCharacterEncoding("UTF-8"); // 한글 인코딩
+		response.setCharacterEncoding("UTF-8");// 한글 인코딩
+
 		System.out.println("Front Controller");
 
 		String uri = request.getRequestURI();
