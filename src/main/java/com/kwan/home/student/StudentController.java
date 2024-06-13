@@ -30,6 +30,8 @@ public class StudentController {
 
 		Action action = new Action();
 		action.setFlag(true);
+
+		// method형식 반환 String
 		String method = request.getMethod(); // request변수에서 메서드를 변수에 저장
 
 		if (ar[2].equals("list")) {

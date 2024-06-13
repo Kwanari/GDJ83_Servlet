@@ -12,19 +12,18 @@ public class WeatherService {
 	}
 
 	// list
-	public List<WeatherDTO> getWeathers(List<WeatherDTO> ar) {
+	public List<WeatherDTO> getWeathers(List<WeatherDTO> list) {
 		System.out.println("Service.getWeathers");
 
 		WeatherDAO wDAO = new WeatherDAO();
 
 		try {
-			ar = wDAO.getWeathers(wdto);
+			list = wDAO.getWeathers(wdto);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return ar;
+		return list;
 
 	}
 
@@ -42,4 +41,11 @@ public class WeatherService {
 
 		return wdto;
 	}
+
+	// add
+	public void add(WeatherDTO weatherDTO) throws Exception {
+		wdao = new WeatherDAO();
+		wdao.add(weatherDTO);
+	}
+
 }

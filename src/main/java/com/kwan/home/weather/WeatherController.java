@@ -26,13 +26,41 @@ public class WeatherController {
 
 		action.setFlag(true);
 
+		// Method 형식 출력
+		String method = request.getMethod();
+
 		if (id.equals("list")) {
 
 			request.setAttribute("wdto", ws.getWeathers(ar));
 			action.setPath("/WEB-INF/views/weather/list.jsp");
 
 		} else if (id.equals("add")) {
+
+			if (method.toUpperCase().equals("POST")) {
+				String city = request.getParameter("city");
+				double gion = Double.parseDouble(request.getParameter("gion"));
+				String status = request.getParameter("status");
+				int humidity = Integer.parseInt(request.getParameter("humidity"));
+
+				WeatherDTO weatherDTO = new WeatherDTO();
+
+				weatherDTO.setCity(city);
+				weatherDTO.setGion(gion);
+				weatherDTO.setStatus(status);
+				weatherDTO.setHumidity(humidity);
+
+				try {
+					ws.add(weatherDTO);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} else {
+				action.setPath("/WEB-INF/views/weather/add.jsp");
+			}
+
 			action.setPath("/WEB-INF/views/weather/add.jsp");
+
 		} else if (id.equals("delete")) {
 
 		} else if (id.equals("detail")) { // detail

@@ -3,6 +3,7 @@ package com.kwan.home.weather;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +67,32 @@ public class WeatherDAO {
 		}
 
 		return detailDTO;
+	}
+
+	public void add(WeatherDTO weatherDTO) throws Exception {
+
+		List<WeatherDTO> list = this.getWeathers(weatherDTO);
+
+		// 도시명-기온-상태-습도
+
+		StringBuffer sb = new StringBuffer();
+
+		sb.append(list.get(list.size() - 1).getNum() + 1 + "-");
+		sb.append(weatherDTO.getCity() + "-");
+		sb.append(weatherDTO.getGion() + "-");
+		sb.append(weatherDTO.getStatus() + "-");
+		sb.append(weatherDTO.getHumidity());
+
+		System.out.println(sb.toString());
+
+		File file = new File("C:\\study", "weather.txt");
+		FileWriter fw = new FileWriter(file, true);
+
+		fw.write(sb.toString() + "\r\n");// write > 버퍼가 다 찰때마다 나옴
+		// \r 주사기와 같음 밀어낸후 다시 빈칸을 만들어줌
+		fw.flush(); // flush> 버퍼를 비움
+
+		fw.close();
+
 	}
 }
