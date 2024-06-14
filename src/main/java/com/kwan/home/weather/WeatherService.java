@@ -48,4 +48,24 @@ public class WeatherService {
 		wdao.add(weatherDTO);
 	}
 
+	// delete
+	public void delete(WeatherDTO weatherDTO) {
+		wdao = new WeatherDAO();
+		try {
+			wdao.delete(weatherDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void update(WeatherDTO weatherDTO) {
+
+		wdao = new WeatherDAO();
+
+		try {
+			wdao.update(weatherDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

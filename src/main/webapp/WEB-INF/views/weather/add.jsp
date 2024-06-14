@@ -28,6 +28,7 @@
 	<input type="text" name="humidity">
 	</div>
 	
+	
 	<input type="submit" value="제출">
 	<button type="submit" value="">등록</button> <!-- 같은 기능 -->
 	

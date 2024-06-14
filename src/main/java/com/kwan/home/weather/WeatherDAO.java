@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class WeatherDAO {
@@ -69,6 +70,7 @@ public class WeatherDAO {
 		return detailDTO;
 	}
 
+	// add
 	public void add(WeatherDTO weatherDTO) throws Exception {
 
 		List<WeatherDTO> list = this.getWeathers(weatherDTO);
@@ -76,8 +78,8 @@ public class WeatherDAO {
 		// 도시명-기온-상태-습도
 
 		StringBuffer sb = new StringBuffer();
-
-		sb.append(list.get(list.size() - 1).getNum() + 1 + "-");
+		Calendar ca = Calendar.getInstance();
+		sb.append(ca.getTimeInMillis() + "-");
 		sb.append(weatherDTO.getCity() + "-");
 		sb.append(weatherDTO.getGion() + "-");
 		sb.append(weatherDTO.getStatus() + "-");
@@ -93,6 +95,91 @@ public class WeatherDAO {
 		fw.flush(); // flush> 버퍼를 비움
 
 		fw.close();
+
+	}
+
+	// delete
+	public void delete(WeatherDTO weatherDTO) throws Exception {
+		// list 불러와서 지우려고하는 num과 일치하는 것을
+		// list 에서 삭제
+		// 남은 list를 기존 file에 다시 저장
+
+		List<WeatherDTO> wdto = this.getWeathers(weatherDTO);
+
+		for (WeatherDTO dto : wdto) {
+			if (dto.getNum() == weatherDTO.getNum()) {
+
+				wdto.remove(dto); // dto참조변수와 같은 주소의 값 삭제
+
+			}
+		}
+
+		StringBuffer sb = new StringBuffer();
+
+		for (WeatherDTO dto : wdto) {
+			Calendar ca = Calendar.getInstance();
+			sb.append(ca.getTimeInMillis());
+			sb.append("-");
+			sb.append(dto.getCity());
+			sb.append("-");
+			sb.append(dto.getGion());
+			sb.append("-");
+			sb.append(dto.getStatus());
+			sb.append("-");
+			sb.append(dto.getHumidity());
+			sb.append("\r\n");
+		}
+
+		File file = new File("C:\\study", "weather.txt");
+
+		FileWriter fw = new FileWriter(file, false);
+		fw.write(sb.toString());
+		fw.flush();
+		fw.close();
+
+	}
+
+	public void update(WeatherDTO weatherDTO) throws Exception {
+
+		List<WeatherDTO> list = this.getWeathers(weatherDTO);
+		WeatherDTO wdto = new WeatherDTO();
+
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getNum() == weatherDTO.getNum()) {
+				list.get(i).setCity(weatherDTO.getCity());
+				list.get(i).setGion(weatherDTO.getGion());
+				list.get(i).setStatus(weatherDTO.getStatus());
+				list.get(i).setHumidity(weatherDTO.getHumidity());
+
+				list.set(i, list.get(i));
+
+				break;
+			}
+		}
+
+		StringBuffer sb = new StringBuffer();
+
+		for (WeatherDTO dto : list) {
+			sb.append(dto.getNum());
+			sb.append("-");
+			sb.append(dto.getCity());
+			sb.append("-");
+			sb.append(dto.getGion());
+			sb.append("-");
+			sb.append(dto.getStatus());
+			sb.append("-");
+			sb.append(dto.getHumidity());
+			sb.append("\r\n");
+		}
+
+		System.out.println(sb.toString());
+
+//		File file = new File("C:\\study", "weather.txt");
+//
+//		FileWriter fw = new FileWriter(file, false);
+//		fw.write(sb.toString());
+//		fw.flush();
+//		fw.close();
 
 	}
 }

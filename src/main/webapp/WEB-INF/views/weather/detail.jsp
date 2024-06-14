@@ -26,7 +26,39 @@
 				<td>${requestScope.wdto.gion}</td>
 				<td>${requestScope.wdto.status}</td>
 				<td>${requestScope.wdto.humidity}</td>
+				
+				
+				<form id="form" action="./delete" method="post">
+					<input id="num" type="hidden" name="num" value="${requestScope.wdto.num}" readonly>
+				</form>
+				
+				<button id="btn">DELETE</button>
+				
+				<button id="up">UPDATE</button>
+				
+				
 		</tbody>
+
+		<script type="text/javascript">
+
+			const form = document.getElementById("form");
+			const btn = document.getElementById("btn");
+			const up = document.getElementById("up");
+			
+			up.addEventListener("click", function(){
+				form.setAttribute("method", "get");
+				form.action="./update";
+				form.submit();
+			})
+			
+
+			btn.addEventListener("click", function(){
+				form.submit();
+				
+			})
+
+
+		</script>
 	</table>
 </body>
 </html>
