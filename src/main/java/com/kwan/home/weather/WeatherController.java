@@ -55,11 +55,13 @@ public class WeatherController {
 					e.printStackTrace();
 				}
 
+//				action.setPath("/weather/list");
+//				action.setPath("list");
+				action.setPath("./list");
+				action.setFlag(false); // frontcontroller에서 리다이렉트
 			} else {
 				action.setPath("/WEB-INF/views/weather/add.jsp");
 			}
-
-			action.setPath("/WEB-INF/views/weather/add.jsp");
 
 		} else if (id.equals("delete")) {
 
