@@ -109,6 +109,9 @@ public class WeatherController {
 
 				ws.update(weatherDTO);
 
+				action.setFlag(false);
+				action.setPath("./list");
+
 			} else {
 
 				weatherDTO = new WeatherDTO();

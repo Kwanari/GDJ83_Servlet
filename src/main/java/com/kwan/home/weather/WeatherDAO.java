@@ -174,12 +174,12 @@ public class WeatherDAO {
 
 		System.out.println(sb.toString());
 
-//		File file = new File("C:\\study", "weather.txt");
-//
-//		FileWriter fw = new FileWriter(file, false);
-//		fw.write(sb.toString());
-//		fw.flush();
-//		fw.close();
+		File file = new File("C:\\study", "weather.txt");
+
+		FileWriter fw = new FileWriter(file, false);
+		fw.write(sb.toString());
+		fw.flush();
+		fw.close();
 
 	}
 }
