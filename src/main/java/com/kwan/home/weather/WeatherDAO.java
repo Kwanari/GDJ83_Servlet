@@ -142,16 +142,15 @@ public class WeatherDAO {
 	public void update(WeatherDTO weatherDTO) throws Exception {
 
 		List<WeatherDTO> list = this.getWeathers(weatherDTO);
-		WeatherDTO wdto = new WeatherDTO();
 
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getNum() == weatherDTO.getNum()) {
-				list.get(i).setCity(weatherDTO.getCity());
-				list.get(i).setGion(weatherDTO.getGion());
-				list.get(i).setStatus(weatherDTO.getStatus());
-				list.get(i).setHumidity(weatherDTO.getHumidity());
+//				list.get(i).setCity(weatherDTO.getCity());
+//				list.get(i).setGion(weatherDTO.getGion());
+//				list.get(i).setStatus(weatherDTO.getStatus());
+//				list.get(i).setHumidity(weatherDTO.getHumidity());
 
-				list.set(i, list.get(i));
+				list.set(i, weatherDTO);
 
 				break;
 			}
